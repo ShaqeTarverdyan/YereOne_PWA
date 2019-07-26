@@ -1,4 +1,5 @@
 .root {
+    width:auto;
     background-color: white;
     color: rgb(var(--venia-text));
     position: relative;

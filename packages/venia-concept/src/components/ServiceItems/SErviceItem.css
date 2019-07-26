@@ -1,0 +1,12 @@
+.ServiceItemRoot {
+
+}
+.ServiceItemRoot img {
+    width: 50%
+}
+.ServiceItemRoot p{
+    font-size: 18px;
+    padding-bottom: 10px;
+    font-weight: 500
+}
+

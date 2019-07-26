@@ -7,9 +7,11 @@ import CreateAccount from 'src/components/CreateAccount';
 import SignIn from 'src/components/SignIn';
 import ForgotPassword from 'src/components/ForgotPassword';
 import CategoryTree from './categoryTree';
+import MenuTree from './MenuTree';
 import NavHeader from './navHeader';
 import defaultClasses from './navigation.css';
 import { MyAccountMenuTrigger } from '../MyAccountMenuPage';
+
 
 class Navigation extends PureComponent {
     static propTypes = {
@@ -50,7 +52,6 @@ class Navigation extends PureComponent {
                 rootNodeId: props.rootCategoryId
             };
         }
-
         return state;
     }
 
@@ -81,7 +82,13 @@ class Navigation extends PureComponent {
             />
         ) : null;
     }
-
+    get menuTree() {
+        return (
+            <div>
+                <MenuTree />
+            </div>
+        )
+    }
     get footer() {
         const { classes } = this.props;
 
@@ -92,8 +99,8 @@ class Navigation extends PureComponent {
                 </Button>
             </div>
         ) : (
-            <MyAccountMenuTrigger />
-        );
+                <MyAccountMenuTrigger />
+            );
     }
 
     get signInForm() {
@@ -113,7 +120,7 @@ class Navigation extends PureComponent {
         );
     }
 
-    createAccount = () => {};
+    createAccount = () => { };
 
     setCreateAccountForm = () => {
         /*
@@ -136,7 +143,7 @@ class Navigation extends PureComponent {
         this.showCreateAccountForm();
     };
 
-    forgotPassword = () => {};
+    forgotPassword = () => { };
 
     /*
      * When the ForgotPassword component is mounted, its email input will be set to
@@ -257,6 +264,7 @@ class Navigation extends PureComponent {
     render() {
         const {
             categoryTree,
+            menuTree,
             createAccountForm,
             footer,
             hideCreateAccountForm,
@@ -279,6 +287,7 @@ class Navigation extends PureComponent {
             classes,
             closeDrawer,
             isOpen,
+            isClose,
             isSignedIn,
             rootCategoryId
         } = props;
@@ -289,21 +298,21 @@ class Navigation extends PureComponent {
             isCreateAccountOpen && !isSignedIn
                 ? hideCreateAccountForm
                 : isForgotPasswordOpen
-                ? hideForgotPasswordForm
-                : isSignInOpen && !isSignedIn
-                ? hideSignInForm
-                : isTopLevel
-                ? closeDrawer
-                : setRootNodeIdToParent;
+                    ? hideForgotPasswordForm
+                    : isSignInOpen && !isSignedIn
+                        ? hideSignInForm
+                        : isTopLevel
+                            ? closeDrawer
+                            : setRootNodeIdToParent;
 
         const title =
             isCreateAccountOpen && !isSignedIn
                 ? 'Create Account'
                 : isForgotPasswordOpen
-                ? 'Forgot password'
-                : isSignInOpen && !isSignedIn
-                ? 'Sign In'
-                : 'Main Menu';
+                    ? 'Forgot password'
+                    : isSignInOpen && !isSignedIn
+                        ? 'Sign In'
+                        : ' yereone Menu';
 
         return (
             <aside className={className}>
@@ -314,7 +323,7 @@ class Navigation extends PureComponent {
                         onClose={closeDrawer}
                     />
                 </div>
-                <nav className={classes.body}>{categoryTree}</nav>
+                <nav className={classes.body}>{menuTree}</nav>
                 <div className={classes.footer}>{footer}</div>
                 {signInForm}
                 {createAccountForm}

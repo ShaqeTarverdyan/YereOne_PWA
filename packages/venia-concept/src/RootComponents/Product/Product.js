@@ -6,7 +6,7 @@ import { addItemToCart } from 'src/actions/cart';
 import { loadingIndicator } from 'src/components/LoadingIndicator';
 import ProductFullDetail from 'src/components/ProductFullDetail';
 import getUrlKey from 'src/util/getUrlKey';
-import productQuery from 'src/queries/getProductDetail.graphql';
+import productDetail from 'src/queries/getProductDetail.graphql';
 
 /**
  * As of this writing, there is no single Product query type in the M2.3 schema.
@@ -21,9 +21,9 @@ class Product extends Component {
         cartId: string
     };
 
-    addToCart = async (item, quantity) => {
+    addToCart = async (product, quantity) => {
         const { addItemToCart, cartId } = this.props;
-        await addItemToCart({ cartId, item, quantity });
+        await addItemToCart({ cartId, product, quantity });
     };
 
     componentDidMount() {
@@ -43,7 +43,7 @@ class Product extends Component {
     render() {
         return (
             <Query
-                query={productQuery}
+                query={productDetail}
                 variables={{ urlKey: getUrlKey(), onServer: false }}
             >
                 {({ loading, error, data }) => {
@@ -51,7 +51,6 @@ class Product extends Component {
                     if (loading) return loadingIndicator;
 
                     const product = data.productDetail.items[0];
-
                     return (
                         <ProductFullDetail
                             product={this.mapProduct(product)}

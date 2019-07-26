@@ -1,0 +1,20 @@
+
+# query service {
+#     services {
+#         items {
+#           title
+#           url_key
+#           iconUrl
+#         }
+#     }
+# }
+
+query service ($category:String!){
+    services (category:$category){
+        items {
+          title
+          url_key
+          iconUrl
+        }
+    }
+}

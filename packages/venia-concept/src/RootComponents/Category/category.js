@@ -22,7 +22,6 @@ class Category extends Component {
         pageSize: number,
         prevPageTotal: number
     };
-
     // TODO: Should not be a default here, we just don't have
     // the wiring in place to map route info down the tree (yet)
     static defaultProps = {
@@ -87,14 +86,14 @@ class Category extends Component {
                         ...pageControl,
                         totalPages: totalPages
                     };
-
+                    console.log('data',data)
                     return (
                         <CategoryContent
                             classes={classes}
                             pageControl={totalWrapper}
                             data={data}
                         />
-                    );
+                    )
                 }}
             </Query>
         );

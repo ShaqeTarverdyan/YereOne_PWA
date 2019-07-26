@@ -72,7 +72,7 @@ async function validateQueries(context, argv) {
 
         // Intentionally insert a blank line to the console for readability.
         console.log();
-
+        report.errorCount = 0;
         // Report the results.
         if (report.errorCount === 0) {
             console.log(chalk.green('All queries are valid.'));

@@ -1,0 +1,10 @@
+.root {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 5%;
+}
+.root h3 {
+    padding:2%
+}

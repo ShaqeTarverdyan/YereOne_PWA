@@ -5,9 +5,10 @@
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
     height: 3rem;
     width: 3rem;
+    color: grey;
 }
 
 .open {
     composes: root;
-    color: rgb(var(--venia-teal));
+    color: grey;
 }

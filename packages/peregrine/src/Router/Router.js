@@ -18,7 +18,6 @@ export default class MagentoRouter extends Component {
 
     render() {
         const { apiBase, children, routerProps, using: Router } = this.props;
-
         return (
             <Router {...routerProps}>
                 <Route>

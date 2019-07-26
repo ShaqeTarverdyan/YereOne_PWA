@@ -1,71 +1,45 @@
 import React, { Component } from 'react';
+import ServiceItems from 'src/components/ServiceItems';
+import Banner from 'src/components/Banner';
+import PortfolioHomePage from 'src/components/PortfolioItems/PortfolioHomePage';
+import Block from 'src/components/Block';
+import Testimonial from 'src/components/Testimonial';
+import classify from 'src/classify';
+import defaultClasses from './home.css';
+import { Link } from "react-router-dom";
 
-import './home.css';
 
 class Home extends Component {
     render() {
+        const { classes } = this.props
         return (
-            <article className="Home">
-                <h1 className="Home-title">
-                    <span>Venia</span>
-                </h1>
-                <section className="Home-hero">
-                    <h2 className="Home-hero-title">
-                        <span>&lsquo;Fall&rsquo; In Love With</span>
-                        <br />
-                        <span>Pieces Inspired By Paris</span>
-                    </h2>
-                    <div className="Home-hero-actions">
-                        <a
-                            className="Home-hero-actions-action"
-                            href="outerwear"
-                        >
-                            <span>Shop Outerwear</span>
-                        </a>
-                    </div>
-                </section>
-                <section className="Home-saleBanner">
-                    <p className="Home-saleBanner-copy">
-                        <span>Sale on all shoes this weekend!</span>
-                    </p>
-                    <p className="Home-saleBanner-copy">
-                        <span>Use promo code HAPPYFEET</span>
-                    </p>
-                </section>
-                <section className="Home-storySection">
-                    <h2 className="Home-storySection-title">
-                        <span>Our Story</span>
-                    </h2>
-                    <div className="Home-storySection-image" />
-                    <div className="Home-storySection-content">
-                        <p className="Home-storySection-content-copy">
-                            <span>
-                                Style is personal. Realizing this wasn't what
-                                most brands were sensitive to, we built a
-                                lifestyle brand that caters to creative,
-                                sensitive, strong women.
-                            </span>
-                        </p>
-                        <p className="Home-storySection-content-copy">
-                            <span>
-                                Venia opened its very first doors in the autumn
-                                of 1992 in Lima, Peru. We now operate over 200
-                                stores worldwide.
-                            </span>
-                        </p>
-                        <div className="Home-storySection-content-actions">
-                            <a
-                                className="Home-storySection-content-actions-action"
-                                href="read-more"
-                            >
-                                <span>Read More</span>
-                            </a>
+            <div className={classes.homePage}>
+                <Banner />
+                <div>
+                    <Link to='services'>
+                        <div className={classes.Title}>
+                            <h2>Main Services</h2>
                         </div>
-                    </div>
-                </section>
-            </article>
+                    </Link>
+                    <ServiceItems />
+                </div>
+                <div>
+                    <Link to='portfolio'>
+                        <div className={classes.Title}>
+                            <h2>Recent Works</h2>
+                        </div>
+                    </Link>
+                    <PortfolioHomePage />
+                </div>
+                <div>
+                    <Block />
+                </div>
+
+                <div>
+                    <Testimonial />
+                </div>
+            </div>
         );
     }
 }
-
-export default Home;
+export default classify(defaultClasses)(Home);

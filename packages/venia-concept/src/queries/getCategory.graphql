@@ -8,6 +8,7 @@ query category($id: Int!, $pageSize: Int!, $currentPage: Int!, $onServer: Boolea
                 items {
                     id
                     name
+                    sku
                     small_image {
                         url
                     }

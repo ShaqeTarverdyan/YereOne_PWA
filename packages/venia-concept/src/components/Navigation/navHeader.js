@@ -16,10 +16,10 @@ class NavHeader extends Component {
         onBack: func.isRequired,
         onClose: func.isRequired
     };
+    
 
     render() {
         const { classes, onBack, onClose, title } = this.props;
-
         return (
             <Fragment>
                 <Trigger key="backButton" action={onBack}>
@@ -35,5 +35,5 @@ class NavHeader extends Component {
         );
     }
 }
-
 export default classify(defaultClasses)(NavHeader);
+

@@ -10,6 +10,7 @@ import ErrorNotifications from './errorNotifications';
 import renderRoutes from './renderRoutes';
 import errorRecord from 'src/util/createErrorRecord';
 
+
 class App extends Component {
     static propTypes = {
         app: shape({

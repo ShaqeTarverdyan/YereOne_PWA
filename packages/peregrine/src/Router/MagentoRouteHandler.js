@@ -18,7 +18,6 @@ export default class MagentoRouteHandler extends Component {
             pathname: string.isRequired
         }).isRequired
     };
-
     state = {
         componentMap: new Map(),
         errorState: {
@@ -27,7 +26,6 @@ export default class MagentoRouteHandler extends Component {
             notFound: false
         }
     };
-
     // TODO: Add the ability to customize the cache name
     async addToCache(urls) {
         if (!window.caches) {
@@ -49,7 +47,6 @@ export default class MagentoRouteHandler extends Component {
             this.getRouteComponent(pathname);
         }
     }
-
     componentDidUpdate() {
         const { props, state } = this;
         const { pathname } = props.location;
@@ -85,7 +82,6 @@ export default class MagentoRouteHandler extends Component {
             'default' in fetchRootComponent
                 ? fetchRootComponent.default
                 : fetchRootComponent;
-
         try {
             // try to resolve the route
             // if this throws, we essentially have a 500 Internal Error
@@ -93,30 +89,28 @@ export default class MagentoRouteHandler extends Component {
                 apiBase,
                 route: pathname
             });
-
             const { type, id } = resolvedRoute;
-
+   
             // if resolution and destructuring succeed but return no match
             // then we have a straightforward 404 Not Found
             if (!type || !id) {
-                throw new Error('404');
+                 throw new Error('404');
             }
-
             // at this point we should have a matching RootComponent
             // if this throws, we essentially have a 500 Internal Error
+
+
             const RootComponent = await fetchRoot(type);
 
             // associate the matching RootComponent with this location
             this.setRouteComponent(pathname, RootComponent, { id });
         } catch ({ message }) {
             const symbol = message === '404' ? NotFound : InternalError;
-
             // we don't have a matching RootComponent, but we've checked for one
             // so associate the appropriate error case with this location
             this.setRouteComponent(pathname, symbol);
         }
     }
-
     setRouteComponent(pathname, RootComponent, meta) {
         if (!mountedInstances.has(this)) {
             // avoid setState if component is not mounted for any reason
@@ -128,7 +122,6 @@ export default class MagentoRouteHandler extends Component {
                 console.warn(`Could not add ${pathname} to cache:`, e);
             }
         });
-
         this.setState(({ componentMap }) => ({
             componentMap: new Map(componentMap).set(pathname, {
                 RootComponent,
@@ -175,3 +168,4 @@ export default class MagentoRouteHandler extends Component {
         return <RootComponent {...routeProps} key={pathname} />;
     }
 }
+

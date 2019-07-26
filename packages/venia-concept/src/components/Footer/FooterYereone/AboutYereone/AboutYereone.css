@@ -1,0 +1,23 @@
+
+.root h4 {
+    font-weight: 700
+}
+.content {
+    display: grid;
+    grid-template-columns:1fr 3fr;
+    column-gap: 5%;
+}
+.content >div  {
+    line-height: 1.5rem
+}
+.content :first-child{
+    margin-top: 4%
+}
+.content >div >img{
+    padding-top: 10%
+}
+@media (max-width: 768px) {
+    .content >div >img{
+        padding-top: 10%
+    }
+}

@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import classify from 'src/classify';
 import defaultClasses from './indicator.css';
 
-import logo from '../Logo/logo.svg';
-
+import loaderindicato from './loadincindicator.jpg'
 class LoadingIndicator extends Component {
     render() {
         const { props } = this;
@@ -14,7 +13,7 @@ class LoadingIndicator extends Component {
             <div className={classes.root}>
                 <img
                     className={classes.indicator}
-                    src={logo}
+                    src={loaderindicato}
                     width="64"
                     height="64"
                     alt="Loading indicator"

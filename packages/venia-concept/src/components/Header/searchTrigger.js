@@ -18,7 +18,6 @@ class SearchTrigger extends Component {
     render() {
         const { children, classes, toggleSearch, searchOpen } = this.props;
         const searchClass = searchOpen ? classes.open : classes.root;
-
         return (
             <Fragment>
                 <button className={searchClass} onClick={toggleSearch}>
@@ -28,5 +27,4 @@ class SearchTrigger extends Component {
         );
     }
 }
-
 export default classify(defaultClasses)(SearchTrigger);

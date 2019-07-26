@@ -12,9 +12,9 @@ const {
 } = require('@magento/pwa-buildpack');
 const path = require('path');
 
+
 const TerserPlugin = require('terser-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
-
 const themePaths = {
     images: path.resolve(__dirname, 'images'),
     templates: path.resolve(__dirname, 'templates'),
@@ -23,6 +23,7 @@ const themePaths = {
 };
 
 const rootComponentsDirs = ['./src/RootComponents/'];
+
 const libs = [
     'apollo-cache-inmemory',
     'apollo-cache-persist',
@@ -38,7 +39,8 @@ const libs = [
     'react-router-dom',
     'redux',
     'redux-actions',
-    'redux-thunk'
+    'redux-thunk',
+    'semantic-ui-react'
 ];
 
 module.exports = async function(env) {
@@ -173,7 +175,8 @@ module.exports = async function(env) {
                         }
                     });
                 }
-            })
+            }),
+
         ],
         optimization: {
             splitChunks: {

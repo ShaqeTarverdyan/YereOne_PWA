@@ -18,7 +18,7 @@ class Trigger extends Component {
 
     render() {
         const { children, classes, openNav } = this.props;
-
+console.log('children', children)
         return (
             <button
                 className={classes.root}
@@ -26,6 +26,7 @@ class Trigger extends Component {
                 onClick={openNav}
             >
                 {children}
+    
             </button>
         );
     }

@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { setContext } from 'apollo-link-context';
 import { Util } from '@magento/peregrine';
-
 import { Adapter } from 'src/drivers';
 import store from 'src/store';
 import app from 'src/actions/app';

@@ -33,4 +33,5 @@ class CategoryContent extends Component {
     }
 }
 
+
 export default classify(defaultClasses)(CategoryContent);

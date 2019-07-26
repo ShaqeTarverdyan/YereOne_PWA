@@ -21,6 +21,7 @@ class Gallery extends Component {
         data: emptyData
     };
 
+
     render() {
         const { classes, data, pageSize } = this.props;
         const hasData = Array.isArray(data) && data.length;
@@ -35,5 +36,6 @@ class Gallery extends Component {
         );
     }
 }
+
 
 export default classify(defaultClasses)(Gallery);

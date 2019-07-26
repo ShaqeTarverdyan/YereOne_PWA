@@ -23,6 +23,7 @@ class MagentoRootComponentsPlugin {
         this.opts = opts;
     }
 
+
     apply(compiler) {
         // Provide `fetchRootComponent` as a global: Expose the source as a
         // module, and then use a ProvidePlugin to inline it.
@@ -33,11 +34,9 @@ class MagentoRootComponentsPlugin {
         new ProvidePlugin({
             fetchRootComponent: 'FETCH_ROOT_COMPONENT'
         }).apply(compiler);
-    }
-
+    };
     async buildFetchModule() {
         const { context, rootComponentsDirs } = this.opts;
-
         // Create a list of absolute paths for root components. When a
         // relative path is found, resolve it from the root context of
         // the webpack build

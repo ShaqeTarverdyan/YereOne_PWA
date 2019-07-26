@@ -1,12 +1,12 @@
-.root {
-    background-color: rgb(var(--venia-grey));
+/* .root {
+    background-color:red;
     border-top: 1px solid rgb(var(--venia-border));
     color: black;
     margin-top: 1rem;
     padding: 0 1rem;
-}
+} */
 
-.tile {
+/* .tile {
     border-bottom: 1px solid rgb(var(--venia-border));
     padding: 1rem 2rem;
 }
@@ -20,9 +20,10 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     margin: 1rem 0;
-}
+} */
 
 .copyright {
+    background-color: rgb(var(--venia-border));
     display: block;
     color: rgb(var(--venia-text-alt));
     font-size: 0.75rem;

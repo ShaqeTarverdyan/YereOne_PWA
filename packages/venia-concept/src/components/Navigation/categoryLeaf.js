@@ -5,7 +5,7 @@ import { func, shape, string } from 'prop-types';
 import classify from 'src/classify';
 import defaultClasses from './categoryLeaf.css';
 
-const urlSuffix = '.html';
+const urlSuffix = '';
 
 class Leaf extends Component {
     static propTypes = {
@@ -17,7 +17,6 @@ class Leaf extends Component {
         urlPath: string.isRequired,
         onNavigate: func
     };
-
     handleClick = () => {
         const { onNavigate } = this.props;
 
@@ -40,5 +39,4 @@ class Leaf extends Component {
         );
     }
 }
-
 export default classify(defaultClasses)(Leaf);

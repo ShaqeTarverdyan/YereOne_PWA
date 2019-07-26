@@ -66,6 +66,7 @@ export const createCart = () =>
         }
     };
 
+
 export const addItemToCart = (payload = {}) => {
     const { item, quantity } = payload;
     const writingImageToCache = writeImageToCache(item);
@@ -77,7 +78,6 @@ export const addItemToCart = (payload = {}) => {
         try {
             const { cart, user } = getState();
             const { cartId } = cart;
-
             if (!cartId) {
                 const missingCartIdError = new Error(
                     'Missing required information: cartId'
@@ -87,14 +87,12 @@ export const addItemToCart = (payload = {}) => {
             }
 
             const cartItem = toRESTCartItem(cartId, payload);
-
             const { isSignedIn } = user;
             const guestCartEndpoint = `/rest/V1/guest-carts/${cartId}/items`;
             const signedInCartEndpoint = '/rest/V1/carts/mine/items';
             const cartEndpoint = isSignedIn
                 ? signedInCartEndpoint
                 : guestCartEndpoint;
-
             const response = await request(cartEndpoint, {
                 method: 'POST',
                 body: JSON.stringify({ cartItem })
@@ -482,10 +480,12 @@ function toRESTCartItem(cartId, payload) {
         qty: quantity,
         sku: item.sku,
         name: item.name,
-        quote_id: cartId
+        quote_id: cartId,
+        product_type: productType
     };
 
     if (productType === 'ConfigurableProduct') {
+
         const { options, parentSku } = payload;
 
         cartItem.sku = parentSku;

@@ -1,0 +1,10 @@
+.root {
+    max-width: 1280px;
+    height: 30px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: end;
+    padding-top:10px
+    
+}

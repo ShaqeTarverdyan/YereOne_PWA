@@ -14,7 +14,6 @@ export default async function resolveUnknownRoute(opts) {
 
     if (!resolveUnknownRoute.preloadDone) {
         resolveUnknownRoute.preloadDone = true;
-
         // Templates may use the new style (data attributes on the body tag),
         // or the old style (handwritten JSON in a script element).
 
@@ -26,7 +25,6 @@ export default async function resolveUnknownRoute(opts) {
                 id: castDigitsToNum(preloadAttrs.modelId)
             };
         }
-
         // Old style:
         const preloadScript = document.getElementById('url-resolver');
         if (preloadScript) {
@@ -121,3 +119,5 @@ function storeURLResolveResult(res, opts) {
     item[opts.route] = res;
     localStorage.setItem('urlResolve', JSON.stringify(item));
 }
+
+

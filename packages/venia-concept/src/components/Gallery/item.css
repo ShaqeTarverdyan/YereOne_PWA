@@ -1,15 +1,21 @@
 .root {
+    width: 410px;
+    background-color: white;
+    height:auto;
+    transition: box-shadow .3s;
+    box-shadow: 0 3px 5px -2px rgba(0,0,0,.2);
+    border: 1px solid #e6e5e5;
+    border-radius: 5px;
 }
 
 .images {
+    height: auto;
     display: grid;
     grid-template-areas: 'main';
 }
-
 .image {
     display: block;
     grid-area: main;
-    height: auto;
     opacity: 1;
     transition-duration: 512ms;
     transition-property: opacity, visibility;
@@ -23,7 +29,58 @@
     background-color: rgb(var(--venia-grey));
 }
 
-.name,
+.content {
+    display: grid;
+    text-align: center;
+}
+.content p {
+    color: #333;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    padding:5%
+}
+.buttonGroup {
+    height: 10%;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    grid-gap: 10%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5%
+}
+.button {
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; 
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.buttonFree {
+    composes:button;
+    color: green;
+    text-transform: uppercase;
+    border: 1px dashed green;
+    padding: 1px 13px;
+}
+.buttonAddToCard {
+    composes:button;
+    background: #00b0ca;
+    border: 1px solid #00b0ca;
+    color:white !important;
+    padding: 3px 5px;
+   
+}
+@media (min-width: 1024px) {
+    .button {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .button {
+        font-size: 1rem;
+    }
+}
 .price {
     font-size: 0.875rem;
     line-height: 1rem;
@@ -52,7 +109,7 @@
 }
 
 .name_pending {
-    composes: name;
+    composes: content;
     background-color: rgb(var(--venia-grey));
 }
 

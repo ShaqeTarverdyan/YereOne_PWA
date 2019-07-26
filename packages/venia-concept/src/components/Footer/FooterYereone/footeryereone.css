@@ -1,0 +1,20 @@
+.root {
+    height: auto;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5%
+}
+.content {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap: 5%;
+    padding-top: 1%;
+    padding-left:4%;
+    padding-right: 4%
+}
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns:1fr;
+    }
+}

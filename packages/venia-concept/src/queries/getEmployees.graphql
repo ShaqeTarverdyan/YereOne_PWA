@@ -1,0 +1,9 @@
+query employees {
+	employees {
+		items {
+			name
+			position
+			imageUrl
+		}
+	}
+}

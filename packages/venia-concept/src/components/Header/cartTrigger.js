@@ -26,7 +26,7 @@ export class Trigger extends Component {
             cart: { details }
         } = this.props;
         const itemsQty = details.items_qty;
-        const iconColor = 'rgb(var(--venia-text))';
+        const iconColor = 'grey';
         const svgAttributes = {
             stroke: iconColor
         };
@@ -53,7 +53,7 @@ export class Trigger extends Component {
                 aria-label="Toggle mini cart"
                 onClick={toggleCart}
             >
-                {cartIcon}
+                <p>{cartIcon}</p>
                 <CartCounter counter={itemsQty ? itemsQty : 0} />
             </button>
         );

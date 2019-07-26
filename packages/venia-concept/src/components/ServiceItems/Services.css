@@ -1,0 +1,34 @@
+.Title {
+    margin-top:40px;
+    background-color: #f9f9f9;
+    padding: 0 !important;
+    font-size: 4rem;
+    border:1px solid #03acc1;
+}
+.servicesRoot {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center
+}
+.ServiceContent {
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+}
+
+@media(max-width:1024px) {
+    .servicesRoot {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+@media(max-width:768px) {
+    .ServiceContent {
+        grid-template-columns:1fr;
+    }
+    .servicesRoot {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+

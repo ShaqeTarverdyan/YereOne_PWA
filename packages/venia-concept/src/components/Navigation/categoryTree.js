@@ -106,7 +106,6 @@ class Tree extends Component {
             </Query>
         ) : null;
     }
-
     render() {
         const { leaves, props } = this;
         const { classes } = props;

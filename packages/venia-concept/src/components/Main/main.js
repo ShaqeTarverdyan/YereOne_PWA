@@ -30,7 +30,6 @@ class Main extends Component {
     render() {
         const { classes, props } = this;
         const { children } = props;
-
         return (
             <main className={classes.root}>
                 <Header />

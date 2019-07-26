@@ -1,0 +1,32 @@
+.root {
+    display: grid;
+    grid-template-rows: 0.7fr 0.5fr 0.5fr;
+    justify-items: center;
+    padding: 5%
+}
+.root h4 {
+    padding: 2%;
+    font-weight: 900
+}
+.root p {
+    padding: 3%
+}
+.root div {
+    font-size: 40px;
+    color: #03acc1;
+    border-radius: 50px;
+    border: 1px solid #d0d0d0;
+    height: 60px;
+    width: 60px;
+    line-height: 70px;
+    background-color: #f5f5f5;
+    transition: all .5s;
+}
+
+@media screen and (max-width: 768px) {
+    .root div{
+        /* width: 20%;
+        padding-top:3%;
+        border-radius: 50%; */
+    }
+}

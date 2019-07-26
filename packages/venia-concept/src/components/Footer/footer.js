@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import FooterYereone from './FooterYereone/footeryereone';
 import classify from 'src/classify';
 import defaultClasses from './footer.css';
 import storeConfigDataQuery from '../../queries/getStoreConfigData.graphql';
@@ -17,75 +17,39 @@ class Footer extends Component {
         })
     };
 
+
     render() {
         const { classes } = this.props;
 
         return (
-            <footer className={classes.root}>
-                <div className={classes.tile}>
-                    <h2 className={classes.tileTitle}>
-                        <span>Your Account</span>
-                    </h2>
-                    <p className={classes.tileBody}>
-                        <span>
-                            Sign up and get access to our wonderful rewards
-                            program.
-                        </span>
-                    </p>
-                </div>
-                <div className={classes.tile}>
-                    <h2 className={classes.tileTitle}>
-                        <span>inquiries@example.com</span>
-                    </h2>
-                    <p className={classes.tileBody}>
-                        <span>
-                            Need to email us? Use the address above and
-                            we&rsquo;ll respond as soon as possible.
-                        </span>
-                    </p>
-                </div>
-                <div className={classes.tile}>
-                    <h2 className={classes.tileTitle}>
-                        <span>Live Chat</span>
-                    </h2>
-                    <p className={classes.tileBody}>
-                        <span>Mon – Fri: 5 a.m. – 10 p.m. PST</span>
-                        <br />
-                        <span>Sat – Sun: 6 a.m. – 9 p.m. PST</span>
-                    </p>
-                </div>
-                <div className={classes.tile}>
-                    <h2 className={classes.tileTitle}>
-                        <span>Help Center</span>
-                    </h2>
-                    <p className={classes.tileBody}>
-                        <span>Get answers from our community online.</span>
-                    </p>
-                </div>
-                <small className={classes.copyright}>
-                    <Query query={storeConfigDataQuery}>
-                        {({ loading, error, data }) => {
-                            if (error) {
-                                return (
-                                    <span className={classes.fetchError}>
-                                        Data Fetch Error:{' '}
-                                        <pre>{error.message}</pre>
-                                    </span>
-                                );
-                            }
-                            if (loading) {
-                                return (
-                                    <span className={classes.fetchingData}>
-                                        Fetching Data
-                                    </span>
-                                );
-                            }
+            <>
 
-                            return <span>{data.storeConfig.copyright}</span>;
-                        }}
-                    </Query>
-                </small>
-            </footer>
+                <footer>
+                    <div><FooterYereone /></div>
+                    <div className={classes.copyright}>
+                        <Query query={storeConfigDataQuery}>
+                            {({ loading, error, data }) => {
+                                if (error) {
+                                    return (
+                                        <span className={classes.fetchError}>
+                                            Data Fetch Error:{' '}
+                                            <pre>{error.message}</pre>
+                                        </span>
+                                    );
+                                }
+                                if (loading) {
+                                    return (
+                                        <span className={classes.fetchingData}>
+                                            Fetching Data
+                                    </span>
+                                    );
+                                }
+                                return <span>{data.storeConfig.copyright}</span>;
+                            }}
+                        </Query>
+                    </div>
+                </footer>
+            </>
         );
     }
 }

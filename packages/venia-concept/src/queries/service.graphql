@@ -1,0 +1,8 @@
+query service ($url_key: String!){
+  service (url_key: $url_key) {
+        title
+        content
+        url_key
+        iconUrl
+    }
+}

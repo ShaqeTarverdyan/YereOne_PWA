@@ -1,0 +1,11 @@
+query portfolios {
+  portfolios {
+    items {
+      id
+      url_key
+      title
+      imageUrl
+      category_id
+    }
+  }
+}

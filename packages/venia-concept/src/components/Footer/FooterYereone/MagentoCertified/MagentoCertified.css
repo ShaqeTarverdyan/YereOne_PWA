@@ -1,0 +1,29 @@
+.root {
+}
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr
+}
+.content > div >img {
+    width:60%
+}
+.content >div  {
+    line-height: 1.5rem
+}
+.content :first-child{
+    margin-top: 4%
+}
+@media (max-width: 768px) {
+    .content {
+        grid-template-columns: 3fr 9fr
+    }
+    .content >div >img{
+        width:40%
+    }
+    .content >div {
+       text-align: center
+    }
+}
+div > a >h4 {
+    font-weight: 700
+}

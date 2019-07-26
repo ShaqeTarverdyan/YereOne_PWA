@@ -17,7 +17,6 @@ class Logo extends Component {
 
     render() {
         const { height, classes } = this.props;
-
         return (
             <img
                 className={classes.logo}

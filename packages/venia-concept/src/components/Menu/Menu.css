@@ -1,0 +1,37 @@
+.topnav {
+    overflow: hidden;
+}
+.topnav ul {
+    display: grid;
+    grid-template-columns:  2fr 1fr 1fr 1fr 1fr 1fr;
+    text-align: center;
+}
+ .topnav li {
+    cursor: pointer;
+}
+.ResponsiveDiv {
+    display: none
+}
+@media screen and (max-width: 768px) {
+    .topnav li{display: none;}
+    .topnav ul {
+        display: inline-grid;
+        grid-template-columns: 1fr 2fr ;
+        align-items: center
+    }
+    .topnav .icon {
+        margin-right: auto;
+        display: block;
+        margin-left: auto;
+        color:grey
+    }
+    .ResponsiveDiv {
+        display: grid;
+        grid-template-columns: 3fr 1fr ;
+        align-items: center
+    }
+    .logo {
+        width: 100px;
+        height: 6rem;
+    }
+  }
