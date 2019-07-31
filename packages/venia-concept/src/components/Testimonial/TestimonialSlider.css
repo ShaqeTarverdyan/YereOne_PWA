@@ -11,7 +11,7 @@
     font-size: 23px;
 }
 .name_review h3 img {
-    position: absolute;
+    /* position: absolute; */
     margin-left: 5px;
     margin-top: 1px;
 }
@@ -25,4 +25,5 @@
 }
 .root ul {
     display: flex !important;
+   
 }

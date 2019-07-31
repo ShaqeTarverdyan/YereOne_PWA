@@ -6,7 +6,7 @@ import defaultClasses from './PortfolioItem.css';
 class PortfolioItem extends React.Component {
     render() {
         const { classes } = this.props;
-        const { url_key, imageUrl, title } = this.props.portfolio
+        const { url_key, imageUrl, title, } = this.props.portfolio
         return (
 
             <div className={classes.view}>
@@ -28,3 +28,5 @@ class PortfolioItem extends React.Component {
 }
 
 export default classify(defaultClasses)(PortfolioItem);
+
+

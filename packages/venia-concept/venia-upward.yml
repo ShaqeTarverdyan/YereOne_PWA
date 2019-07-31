@@ -203,6 +203,52 @@ resource:
           # See the top-level 'product' object for details on its resolved data
           model: product
           template: './templates/product-shell.mst'
+    - matches: urlResolver.type
+      pattern: 'PORTFOLIOS'
+      use:
+        inline:
+          # See the top-level 'product' object for details on its resolved data
+          model: portfolios
+          template: './templates/portfolios-shell.mst'
+
+    - matches: urlResolver.type
+      pattern: 'PORTFOLIO'
+      use:
+        inline:
+          # See the top-level 'product' object for details on its resolved data
+          model: portfolio
+          template: './templates/portfolio-shell.mst'
+  
+    - matches: urlResolver.type
+      pattern: 'SERVICES'
+      use:
+        inline:
+          # See the top-level 'product' object for details on its resolved data
+          model: services
+          template: './templates/services-shell.mst'
+    - matches: urlResolver.type
+      pattern: 'SERVICE'
+      use:
+        inline:
+          # See the top-level 'product' object for details on its resolved data
+          model: service
+          template: './templates/service-shell.mst'
+
+    - matches: urlResolver.type
+      pattern: 'ABOUT'
+      use:
+        inline:
+          # See the top-level 'product' object for details on its resolved data
+          model: about
+          template: './templates/about-shell.mst'  
+    - matches: urlResolver.type
+      pattern: 'CONTACT'
+      use:
+        inline:
+          # See the top-level 'product' object for details on its resolved data
+          template: './templates/contact-shell.mst'
+          
+          
     # CMS_PAGE, CATEGORY, and PRODUCT are known page types with specific
     # data models and template files for each type.
     # The following condition handles the case where the urlResolver object
@@ -342,11 +388,43 @@ cmsPageResult:
       onServer: true
       id: urlResolver.id
 
+portfolios: portfoliosPageResult.data.portfolios
+portfoliosPageResult: 
+  url: magentoGQL
+  query: './src/queries/getPortfolioList.graphql'
+
+portfolio: portfolioPageresult.data.portfolio
+portfolioPageresult: 
+  url: magentoGQL
+  query: './src/queries/getPortfolio.graphql'  
+  variables:
+    inline:
+      url_key: urlKey 
+  
+      
+services: servicesPageResult.data.services
+servicesPageResult: 
+  url: magentoGQL
+  query: './src/queries/services.graphql'  
+
+service: servicePageresult.data.portfolio
+servicePageresult: 
+  url: magentoGQL
+  query: './src/queries/service.graphql'  
+  variables:
+    inline:
+      url_key: urlKey 
+
+about: aboutPageResult.data.about
+aboutPageResult:
+  url: magentoGQL
+  query: './src/queries/getEmployees.graphql' 
+  
 # The urlKey object returns the value of the URL key from the request path
 urlKey:
   when:
     - matches: request.url.pathname
-      pattern: '^/(?:(.*)\.html)?'
+      pattern: '^/(?:(.*))?'
       use: $match.$1
   default:
     inline: ''

@@ -1,15 +1,6 @@
 
-# query service {
-#     services {
-#         items {
-#           title
-#           url_key
-#           iconUrl
-#         }
-#     }
-# }
 
-query service ($category:String!){
+query services ($category:String){
     services (category:$category){
         items {
           title

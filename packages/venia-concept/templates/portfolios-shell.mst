@@ -1,0 +1,10 @@
+{{> templates/open-document}}
+    {{#model}}
+    <title>PortfolioPage</title>
+    {{/model}}
+  {{> templates/open-body }}
+    <div id="root">
+        Loading {{model.title}}...
+    </div>
+  {{> templates/seed-bundles}}
+{{> templates/close-document}}

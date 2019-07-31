@@ -21,7 +21,6 @@ class MainServices extends React.Component {
                             {({ loading, error, data }) => {
                                 if (error) return <div>Data Fetch Error :(</div>;
                                 if (loading) return loadingIndicator;
-                                console.log('dataa',data)
                                 return (
                                     data.services.items.map(service => (
                                         <ServiceItem service={service} key={service.url_key} />

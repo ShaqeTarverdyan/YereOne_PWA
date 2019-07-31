@@ -16,6 +16,7 @@ class PortfolioItems extends React.Component {
     }
 
     filter(e) {
+        
         const show = $(e.target).data('show');
         this.iso.arrange({
             filter: function (itemElem) {
@@ -31,6 +32,9 @@ class PortfolioItems extends React.Component {
             }
         })
     }
+     replaceClassName = (arg) => {
+        return arg.replace(",", " ")
+     }
     render() {
         const { data } = this.props;
         return (
@@ -44,13 +48,14 @@ class PortfolioItems extends React.Component {
 
                 <div className={`root1`}>
                     {
-                        data.portfolios.items.map((portfolio) => (
-
+                        data.portfolios.items.map((portfolio,i) => (
+                            
+                            <div className={this.replaceClassName(portfolio.category_id)} key={i}>
                                 <PortfolioItem
                                     portfolio={portfolio}
-                                    key={portfolio.url_key}
-                                    className={`${portfolio.category_id} ${portfolio.__typename} ${defaultClasses.PortfolioItems}`}
+                                    key={portfolio.url_key} 
                                 />
+                            </div>
                         ))
                     }
                 </div>

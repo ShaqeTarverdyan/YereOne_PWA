@@ -7,8 +7,7 @@
     cursor: default;
   }
   
-  .view .mask,
-  .view .content {
+  .view .mask {
     width: 310px;
     height: 310px;
     position: absolute;
@@ -31,9 +30,19 @@
     font-size: 17px;
     padding: 10px;
     background: rgba(0,0,0,.6);
-    margin: 20px 0 0 0
+    margin: 10px 0 0 0
   }
-  
+  .view h2 {
+    transform: translateY(-500px);
+    opacity: 0;
+    font-family: Raleway, serif;
+    transition: all 0.2s ease-in-out;
+  }
+  .view:hover h2,
+  .view:hover a.info {
+    opacity: 1;
+    transform: translateY(0px);
+  }
   
   .view a.info {
     padding: 7px 14px;
@@ -66,19 +75,8 @@
     transition: all 0.5s ease-in-out;
   }
   
-  .view h2 {
-    transform: translateY(-100px);
-    opacity: 0;
-    font-family: Raleway, serif;
-    transition: all 0.2s ease-in-out;
-  }
   
-  .view p {
-    transform: translateY(100px);
-    opacity: 0;
-    transition: all 0.2s linear;
-  }
-  
+
   .view a.info {
     opacity: 0;
     transition: all 0.2s ease-in-out;
@@ -92,17 +90,7 @@
   .view:hover .mask {
     opacity: 1;
   }
-  
-  .view:hover h2,
-  .view:hover p,
-  .view:hover a.info {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  
-  .view:hover p {
-    transition-delay: 0.1s;
-  }
+
  .view:hover a.info {
     transition-delay: 0.2s;
   } 

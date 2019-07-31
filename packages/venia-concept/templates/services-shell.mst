@@ -1,0 +1,10 @@
+{{> templates/open-document}}
+    {{#model}}
+    <title>services</title>
+    {{/model}}
+  {{> templates/open-body }}
+    <div id="root">
+        Loading {{model.name}}...
+    </div>
+  {{> templates/seed-bundles}}
+{{> templates/close-document}}

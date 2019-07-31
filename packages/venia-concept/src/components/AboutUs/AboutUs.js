@@ -26,7 +26,6 @@ class AboutUs extends React.Component {
                             {({ loading, error, data }) => {
                                 if (error) return <div>Data Fetch Error :(</div>;
                                 if (loading) return loadingIndicator;
-                                console.log('about', data.employees.items)
                                 return (
                                     <Team members={data.employees.items} />
                                 )

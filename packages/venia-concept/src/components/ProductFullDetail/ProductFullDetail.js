@@ -94,7 +94,7 @@ class ProductFullDetail extends Component {
         const { product, classes } = props;
         const { name, sku, small_image, short_description } = product
         const details = this.state.showdetails ? <RichText content={product.description} /> : <h2>there will be reviews</h2>;
-        
+
         return (
             <div className={classes.root}>
                 <h1>{name} | {sku}</h1>
@@ -128,10 +128,10 @@ class ProductFullDetail extends Component {
                     </div>
                 </div>
                 <div className={classes.Details}>
-                    <div className={classes.toggleButtonGroup}>
+                    {/* <div className={classes.toggleButtonGroup}>
                         <button onClick={this.handleToggleDetails}>Detail</button>
                         <button onClick={this.handleToggleReviews}>Reviews</button>
-                    </div>
+                    </div> */}
                     <hr style={{ margin: '0', padding: '0' }} />
                     <div className={classes.detailContent}>{details}</div>
                 </div>

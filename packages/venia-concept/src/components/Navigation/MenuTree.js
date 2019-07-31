@@ -16,7 +16,6 @@ const menudata = [
 class MenuTree extends React.Component {
     render() {
         const { classes } = this.props;
-        console.log('this.prp[s', this.props)
         return (
             <div>
                 <ul>

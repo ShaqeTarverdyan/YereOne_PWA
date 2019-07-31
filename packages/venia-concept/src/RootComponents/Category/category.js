@@ -86,7 +86,6 @@ class Category extends Component {
                         ...pageControl,
                         totalPages: totalPages
                     };
-                    console.log('data',data)
                     return (
                         <CategoryContent
                             classes={classes}

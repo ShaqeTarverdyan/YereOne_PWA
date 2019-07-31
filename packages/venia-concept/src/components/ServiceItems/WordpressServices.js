@@ -1,7 +1,6 @@
 import React from 'react';
 import classify from 'src/classify';
 import defaultClasses from './Services.css';
-import { Link } from "react-router-dom";
 import { Query } from 'src/drivers';
 import { loadingIndicator } from 'src/components/LoadingIndicator';
 import services from '../../queries/services.graphql';
@@ -21,7 +20,6 @@ class WordpressServices extends React.Component {
                             {({ loading, error, data }) => {
                                 if (error) return <div>Data Fetch Error :(</div>;
                                 if (loading) return loadingIndicator;
-                                console.log('dataa',data)
                                 return (
                                     data.services.items.map(service => (
                                         <ServiceItem service={service} key={service.url_key} />
@@ -30,7 +28,6 @@ class WordpressServices extends React.Component {
                             }}
                         </Query>
                     </div>
-
                 </div>
             </>
         );

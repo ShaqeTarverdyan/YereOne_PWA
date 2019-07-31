@@ -9,10 +9,16 @@ const Team = (props) => {
     return (
         <div className={classes.root}>
             {
-                members.map(item =>
-                    <div className={classes.content}>
+                members.map((item,i) =>
+                    <div className={classes.content} key={i}>
                         <img src={item.imageUrl} alt="yereonemember" />
+                        <div className={classes.title}>{item.name}</div>
+
+                        <div className={classes.position}>
+                            <h2>{item.position}</h2>
+                        </div>
                     </div>
+
                 )
             }
 

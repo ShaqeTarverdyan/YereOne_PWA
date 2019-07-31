@@ -4,7 +4,6 @@ import { Query } from 'src/drivers';
 import TestimonialSlider from './TestimonialSlider';
 import defaultClasses from './Testimonial.css';
  
-
 const Testimonial = () => {
     return (
         <div className={defaultClasses.testimonial}> 
@@ -14,7 +13,6 @@ const Testimonial = () => {
                     query={getTestimonial}                    
                 >
                  {({ loading, error, data }) => {
-                     console.log(data, error)
                          if (error) {
                              return (
                                  <span>
@@ -30,7 +28,6 @@ const Testimonial = () => {
                                  </span>
                              );
                          }
-                         console.log(data.testimonials.items, 'testimonial')
                          const { items } = data.testimonials
                      return (
                          <div >

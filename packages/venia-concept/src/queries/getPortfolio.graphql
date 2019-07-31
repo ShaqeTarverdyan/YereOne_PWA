@@ -1,9 +1,10 @@
 query portfolio ($url_key: String!) {
-  portfolio (url_key: $url_key) {
-    id
-    url_key
-    title
-    imageUrl
-    content
-  }
+	portfolio (url_key: $url_key) {
+		id
+		url_key
+		title
+		imageUrl
+		content
+		
+	}
 }

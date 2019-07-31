@@ -5,17 +5,57 @@
     padding-bottom: 10%;
     margin-left: 5%;
     margin-right: 5%;
-    overflow: hidden;
     position: relative;
-}
-.content {
 
 }
+
+.content {
+    position: relative;
+    text-align: left;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    max-height: 350px;
+    background: #3085a3;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+}
 .content img {
-    width: 100%;
+    width: calc(100% + 50px);
     border-radius: 10px;
     position: relative;
-   
+    opacity: .7;
+    transform: translate3d(-40px,0,0);
+    transition: opacity .35s,transform .35s;
+    display:block
+}
+.content img:hover {
+    opacity: 1;
+    transform: translate3d(0,0,0)
+}
+
+.content .position {
+    position: absolute;
+    overflow: hidden;
+}
+.content h2 {
+    transform: translateY(0px);
+    opacity: 0;
+    font-family: Raleway, serif;
+    transition: all 0.2s ease-in-out;
+}
+.content:hover h2 {
+    opacity: 1;
+    transform: translateY(-100px);
+}
+.title {
+    position:absolute;
+    bottom: 30%;
+    left:10%;
+    color:white;
+    font-size:30px
 }
 .root .mask {
     width: 310px;
@@ -24,6 +64,11 @@
     overflow: hidden;
     top: 0;
     left: 0
+}
+@media (max-width: 1280px) {
+    .root {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 @media (max-width: 1024px) {
     .root {
