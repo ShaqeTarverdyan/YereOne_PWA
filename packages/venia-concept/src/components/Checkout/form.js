@@ -95,11 +95,9 @@ class Form extends Component {
             directory
         } = this.props;
         const { countries } = directory;
-
         switch (editing) {
             case 'address': {
                 const { shippingAddress } = this.props;
-
                 return (
                     <AddressForm
                         initialValues={shippingAddress}
@@ -155,10 +153,12 @@ class Form extends Component {
             submitOrder,
             submitting
         } = this.props;
-
         return (
             <Fragment>
                 <div className={classes.body}>
+
+
+
                     <Section
                         label="Ship To"
                         onClick={this.editAddress}
@@ -180,6 +180,7 @@ class Form extends Component {
                     >
                         {this.shippingMethodSummary}
                     </Section>
+
                     <Section label="TOTAL">
                         <Price
                             currencyCode={cart.totals.quote_currency_code}
@@ -203,7 +204,6 @@ class Form extends Component {
 
     get paymentMethodSummary() {
         const { classes, hasPaymentMethod, paymentData } = this.props;
-
         if (!hasPaymentMethod) {
             return (
                 <span className={classes.informationPrompt}>
@@ -211,25 +211,10 @@ class Form extends Component {
                 </span>
             );
         }
-
-        let primaryDisplay = '';
-        let secondaryDisplay = '';
-        if (paymentData) {
-            primaryDisplay = paymentData.details.cardType;
-            secondaryDisplay = paymentData.description;
-        }
-
         return (
-            <Fragment>
-                <strong className={classes.paymentDisplayPrimary}>
-                    {primaryDisplay}
-                </strong>
-                <br />
-                <span className={classes.paymentDisplaySecondary}>
-                    {secondaryDisplay}
-                </span>
-            </Fragment>
-        );
+            <span>{paymentData.title}</span>
+        )
+
     }
 
     get shippingAddressSummary() {

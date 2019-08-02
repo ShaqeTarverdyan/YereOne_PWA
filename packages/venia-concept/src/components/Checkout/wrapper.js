@@ -16,14 +16,17 @@ import Flow from './flow';
 
 const hasData = value => !!value;
 const isCartReady = cart => cart.details.items_count > 0;
-const isCheckoutReady = checkout => {
+const isCheckoutReady = (checkout, cart) => {
     const {
         billingAddress,
         paymentData,
         shippingAddress,
-        shippingMethod
+        shippingMethod,
     } = checkout;
 
+   if(cart.details.is_virtual)  {
+       return true
+   };
     return [billingAddress, paymentData, shippingAddress, shippingMethod].every(
         hasData
     );
@@ -94,7 +97,6 @@ export class CheckoutWrapper extends Component {
             isSignedIn: bool
         })
     };
-
     render() {
         const {
             beginCheckout,
@@ -115,7 +117,7 @@ export class CheckoutWrapper extends Component {
         if (!(cart && checkout)) {
             return null;
         }
-
+        
         const actions = {
             beginCheckout,
             cancelCheckout,
@@ -140,7 +142,7 @@ export class CheckoutWrapper extends Component {
             hasShippingAddress: hasData(shippingAddress),
             hasShippingMethod: hasData(shippingMethod),
             isCartReady: isCartReady(cart),
-            isCheckoutReady: isCheckoutReady(checkout)
+            isCheckoutReady: isCheckoutReady(checkout, cart)
         };
 
         const flowProps = {
@@ -151,7 +153,6 @@ export class CheckoutWrapper extends Component {
             user,
             ...miscProps
         };
-
         return <Flow {...flowProps} />;
     }
 }

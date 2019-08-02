@@ -37,8 +37,12 @@ response:
     # handled by the top-level 'proxy' object, which is a ProxyResolver
     # that passes the request through to the backing Magento server.
     - matches: request.url.pathname
-      pattern: '^/(graphql|rest|media)(/|$)'
+      pattern: '^/(graphql|rest|media|wp-json)(/|$)'
       use: proxy
+    #request to wordpress
+    # - matches: request.url.pathname
+    #   pattern: '^/(wp-json)(/|$)'
+    #   use: proxy_wordpress
     # Requests to create an account are handled by the top-level 'index'
     # object, which returns a generic app shell
     - matches: request.url.pathname
@@ -115,18 +119,28 @@ isDevelopment:
         inline: true
   default:
     inline: false
-
+#env.MAGENTO_BACKEND_URL
 # A ProxyResolver object that passes a request to the backend Magento
 # server defined in the MAGENTO_BACKEND_URL environment variable.
 # An UPWARD server infers this object as a ProxyResolver due to the presence
 # of the 'target' property.
 proxy:
-  target: env.MAGENTO_BACKEND_URL
+  target:
+    when:
+      - matches: request.url.pathname
+        pattern: '^/wp-json'
+        use: env.WORDPRESS_BACKEND_URL
+    default: env.MAGENTO_BACKEND_URL
   # A local Magento install may have SSH configured and untrusted,
   # which is not a major concern, especially if containerized.
   ignoreSSLErrors:
     inline: true
 
+  
+# proxy_wordpress: 
+#   target: env.WORDPRESS_BACKEND_URL
+#   ignoreSSLErrors:
+#     inline: true
 # The appShell object resolves to a response that returns server-side rendered
 # HTML containing the PWA application shell.
 # For SEO purposes, the appropriate meta tags in the HTML head element are also

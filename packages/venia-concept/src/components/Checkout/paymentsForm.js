@@ -17,6 +17,7 @@ import {
     validateRegionCode
 } from 'src/util/formValidators';
 import combine from 'src/util/combineValidators';
+import PaymentMethods from './paymentMethods';
 
 const DEFAULT_FORM_VALUES = {
     addresses_same: true
@@ -55,7 +56,8 @@ class PaymentsForm extends Component {
     };
 
     state = {
-        isRequestingPaymentNonce: false
+        isRequestingPaymentNonce: false,
+        valueOfPaymentMethod: ''
     };
 
     render() {
@@ -92,6 +94,7 @@ class PaymentsForm extends Component {
                 onSubmit={this.submit}
             >
                 {formChildren}
+            
             </Form>
         );
     }
@@ -154,11 +157,17 @@ class PaymentsForm extends Component {
     formChildren = ({ formState }) => {
         const { classes, submitting } = this.props;
 
+
         return (
             <Fragment>
                 <div className={classes.body}>
                     <h2 className={classes.heading}>Billing Information</h2>
-                    <div className={classes.braintree}>
+                    <PaymentMethods 
+                        onSelect={this.selectPaymentMethod} 
+                        // onSuccess={this.setPaymentNonce}
+
+                    />
+                    {/* <div className={classes.braintree}>
                         <BraintreeDropin
                             isRequestingPaymentNonce={
                                 this.state.isRequestingPaymentNonce
@@ -166,7 +175,7 @@ class PaymentsForm extends Component {
                             onError={this.cancelPaymentNonceRequest}
                             onSuccess={this.setPaymentNonce}
                         />
-                    </div>
+                    </div> */}
                     <div className={classes.address_check}>
                         <Checkbox
                             field="addresses_same"
@@ -197,6 +206,7 @@ class PaymentsForm extends Component {
         this.formApi = formApi;
     };
 
+
     /*
      *  Event Handlers.
      */
@@ -208,7 +218,14 @@ class PaymentsForm extends Component {
         this.setState({ isRequestingPaymentNonce: true });
     };
 
-    setPaymentNonce = value => {
+    selectPaymentMethod = (code, title) => {
+      
+      const itemObject = { code, title }
+        this.setPaymentNonce(itemObject)
+    }
+
+    
+    setPaymentNonce = (itemObject) => {
         this.setState({
             isRequestingPaymentNonce: false
         });
@@ -235,8 +252,9 @@ class PaymentsForm extends Component {
         this.props.submit({
             billingAddress,
             paymentMethod: {
-                code: 'braintree',
-                data: value
+                code:itemObject.code,
+                data:itemObject
+                
             }
         });
     };

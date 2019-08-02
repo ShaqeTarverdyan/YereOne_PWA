@@ -140,6 +140,7 @@ class Flow extends Component {
 
                 return <Cart {...stepProps} />;
             }
+
             case 'form': {
                 const stepProps = {
                     availableShippingMethods,
@@ -165,7 +166,6 @@ class Flow extends Component {
                     submitShippingMethod,
                     submitting
                 };
-
                 return <Form {...stepProps} />;
             }
             case 'receipt': {

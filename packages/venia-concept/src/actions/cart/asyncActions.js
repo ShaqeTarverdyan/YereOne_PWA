@@ -359,7 +359,7 @@ export const getCartDetails = (payload = {}) => {
                     item.options = options;
                 });
             }
-
+            
             dispatch(
                 actions.getDetails.receive({ details, paymentMethods, totals })
             );

@@ -83,6 +83,7 @@ export const getShippingMethods = () => {
 };
 
 export const submitPaymentMethodAndBillingAddress = payload =>
+
     async function thunk(dispatch, getState) {
         submitBillingAddress(payload.formValues.billingAddress)(
             dispatch,
@@ -209,24 +210,23 @@ export const submitOrder = () =>
 
         try {
             // POST to shipping-information to submit the shipping address and shipping method.
-            const guestShippingEndpoint = `/rest/V1/guest-carts/${cartId}/shipping-information`;
-            const authedShippingEndpoint =
-                '/rest/V1/carts/mine/shipping-information';
-            const shippingEndpoint = user.isSignedIn
-                ? authedShippingEndpoint
-                : guestShippingEndpoint;
-
-            await request(shippingEndpoint, {
-                method: 'POST',
-                body: JSON.stringify({
-                    addressInformation: {
-                        billing_address,
-                        shipping_address,
-                        shipping_carrier_code: shipping_method.carrier_code,
-                        shipping_method_code: shipping_method.method_code
-                    }
-                })
-            });
+            // const guestShippingEndpoint = `/rest/V1/guest-carts/${cartId}/shipping-information`;
+            // const authedShippingEndpoint =
+            //     '/rest/V1/carts/mine/shipping-information';
+            // const shippingEndpoint = user.isSignedIn
+            //     ? authedShippingEndpoint
+            //     : guestShippingEndpoint;
+            // await request(shippingEndpoint, {
+            //     method: 'POST',
+            //     body: JSON.stringify({
+            //         addressInformation: {
+            //             billing_address,
+            //             shipping_address,
+            //             shipping_carrier_code:  shipping_method.carrier_code,
+            //             shipping_method_code:  shipping_method.method_code
+            //         }
+            //     })
+            // });
 
             // POST to payment-information to submit the payment details and billing address,
             // Note: this endpoint also actually submits the order.
@@ -236,7 +236,7 @@ export const submitOrder = () =>
             const paymentEndpoint = user.isSignedIn
                 ? authedPaymentEndpoint
                 : guestPaymentEndpoint;
-
+                const additional_data = cart.details.is_virtual ? {} : paymentMethod.data.nonce
             const response = await request(paymentEndpoint, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -244,9 +244,7 @@ export const submitOrder = () =>
                     cartId: cartId,
                     email: shipping_address.email,
                     paymentMethod: {
-                        additional_data: {
-                            payment_method_nonce: paymentMethod.data.nonce
-                        },
+                        additional_data: additional_data,
                         method: paymentMethod.code
                     }
                 })

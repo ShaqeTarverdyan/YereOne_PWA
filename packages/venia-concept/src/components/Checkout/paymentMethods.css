@@ -1,0 +1,17 @@
+
+.liStyle {
+   border:1px solid grey;
+   padding:1%;
+   text-align: center; 
+   margin:1%;
+   cursor:pointer;
+   background-color: #05bad8;
+   color:white
+}
+
+.liStyle:hover {
+    font-weight: 900;
+    background-color: white;
+    color:#05bad8;
+    padding: 2%
+}
