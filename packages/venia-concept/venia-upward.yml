@@ -137,10 +137,6 @@ proxy:
     inline: true
 
   
-# proxy_wordpress: 
-#   target: env.WORDPRESS_BACKEND_URL
-#   ignoreSSLErrors:
-#     inline: true
 # The appShell object resolves to a response that returns server-side rendered
 # HTML containing the PWA application shell.
 # For SEO purposes, the appropriate meta tags in the HTML head element are also
@@ -244,7 +240,7 @@ resource:
       pattern: 'SERVICE'
       use:
         inline:
-          # See the top-level 'product' object for details on its resolved data
+          # See the top-level 'service' object for details on its resolved data
           model: service
           template: './templates/service-shell.mst'
 
@@ -252,15 +248,22 @@ resource:
       pattern: 'ABOUT'
       use:
         inline:
-          # See the top-level 'product' object for details on its resolved data
+          # See the top-level 'about' object for details on its resolved data
           model: about
           template: './templates/about-shell.mst'  
     - matches: urlResolver.type
       pattern: 'CONTACT'
       use:
         inline:
-          # See the top-level 'product' object for details on its resolved data
+          # See the top-level 'contact' object for details on its resolved data
           template: './templates/contact-shell.mst'
+
+    - matches: urlResolver.type
+      pattern: 'BLOG'
+      use:
+        inline:
+          # See the top-level 'blog' object for details on its resolved data
+          template: './templates/blog-shell.mst'
           
           
     # CMS_PAGE, CATEGORY, and PRODUCT are known page types with specific
