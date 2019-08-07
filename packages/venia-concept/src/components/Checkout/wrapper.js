@@ -164,6 +164,7 @@ const mapStateToProps = ({ cart, checkout, directory, user }) => ({
     user
 });
 
+
 const mapDispatchToProps = {
     beginCheckout,
     cancelCheckout,

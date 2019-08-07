@@ -1,18 +1,13 @@
 import React from 'react';
 
-import Blog_Component from 'src/components/./Blog_Component/./Blog_Component'
+import BlogComponent from 'src/components/./BlogComponent/./BlogComponent'
 class Blog extends React.Component {
    
     render() {
    
         return (
             <div>
-                <Blog_Component />
-                {/* {
-                    posts.map(post => 
-                        <p>{post.id}</p>
-                        )
-                } */}
+                <BlogComponent />
             </div>
         );
     }
