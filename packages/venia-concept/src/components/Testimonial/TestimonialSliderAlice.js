@@ -3,7 +3,7 @@ import AliceCarousel from 'react-alice-carousel';
 import  "react-alice-carousel/lib/alice-carousel.css";
 import defaultClasses from './TestimonialSlider.css';
 
-const TestimonialSlider = ( {items} ) => {
+const TestimonialSliderAlice = ( {items} ) => {
     const handleOnDragStart = e => e.preventDefault();
     const item =   {
         0: {
@@ -53,4 +53,4 @@ const TestimonialSlider = ( {items} ) => {
         </div>
     )
 }
-export default TestimonialSlider;
+export default TestimonialSliderAlice;

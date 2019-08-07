@@ -5,13 +5,13 @@
     margin-top: 20px;
 }
 .slideTestimonial > img {
-    width: 40%;
+    
 }
-.name_review h3{
+/* .name_review h3{
     font-size: 23px;
 }
 .name_review h3 img {
-    /* position: absolute; */
+  
     margin-left: 5px;
     margin-top: 1px;
 }
@@ -26,4 +26,4 @@
 .root ul {
     display: flex !important;
    
-}
+} */

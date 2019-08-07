@@ -1,8 +1,9 @@
 import React from 'react';
 import getTestimonial from 'src/queries/getTestimonials.graphql';
 import { Query } from 'src/drivers';
-import TestimonialSlider from './TestimonialSlider';
+//import TestimonialSliderAlice from './TestimonialSliderAlice';
 import defaultClasses from './Testimonial.css';
+import CarouselOwl from './owlCarousel';
  
 const Testimonial = () => {
     return (
@@ -31,7 +32,8 @@ const Testimonial = () => {
                          const { items } = data.testimonials
                      return (
                          <div >
-                            <TestimonialSlider items={items}/>
+                          {/* <TestimonialSliderAlice items={items}/> */}
+                          <CarouselOwl items={items}/>
                          </div>
                      )
                      }}

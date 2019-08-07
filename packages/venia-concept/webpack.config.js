@@ -92,6 +92,7 @@ module.exports = async function(env) {
                 },
                 {
                     test: /\.css$/,
+                    exclude: /node_modules|owl/,
                     use: [
                         'style-loader',
                         {
@@ -101,6 +102,20 @@ module.exports = async function(env) {
                                 localIdentName:
                                     '[name]-[local]-[hash:base64:3]',
                                 modules: true
+                            }
+                        }
+                    ]
+                },
+                {
+                    test: /\.css$/,
+                    include: /node_modules/,
+                    use: [
+                        'style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: false
                             }
                         }
                     ]
@@ -122,9 +137,15 @@ module.exports = async function(env) {
             }
         }),
         plugins: [
+
             await makeMagentoRootComponentsPlugin({
                 rootComponentsDirs,
                 context: __dirname
+            }),
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery',
+                'window.jQuery': 'jquery'
             }),
             new webpack.EnvironmentPlugin(validEnv),
             new webpack.DefinePlugin({
